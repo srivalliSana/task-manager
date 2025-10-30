@@ -15,9 +15,14 @@ app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("✅ Task Manager API is running successfully!");
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api-docs", swaggerDocs); // Swagger UI
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
